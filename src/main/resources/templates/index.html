@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>메인 페이지</title>
+    <!-- Bootstrap CSS 링크 (친구의 경로에 맞게 수정해주세요) -->
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px; /* 상단 여백 */
+        }
+        .top-left-button-container {
+            position: absolute; /* 절대 위치 지정 */
+            top: 20px; /* 상단에서 20px */
+            left: 20px; /* 좌측에서 20px */
+            z-index: 1000; /* 다른 요소 위에 표시되도록 */
+        }
+        .main-content {
+            text-align: center; /* 중앙 정렬 */
+            margin-top: 100px; /* 버튼과 겹치지 않도록 여백 */
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-left-button-container">
+    <!-- 로그인 버튼 -->
+    <!-- GET 방식으로 /login URL로 이동합니다. -->
+    <a th:href="@{/sign}" class="btn btn-primary btn-sm">로그인/회원가입</a>
+</div>
+
+<div class="main-content">
+    <div class="py-5">
+        <h2>환영합니다!</h2>
+        <p>이곳은 메인 페이지입니다.</p>
+        <p>로그인하여 더 많은 기능을 이용해보세요!</p>
+    </div>
+</div>
+
+</body>
+</html>

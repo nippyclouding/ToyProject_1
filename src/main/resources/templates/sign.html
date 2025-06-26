@@ -1,0 +1,49 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex; /* Flexbox를 사용하여 중앙 정렬 */
+            justify-content: center; /* 가로 중앙 정렬 */
+            align-items: center; /* 세로 중앙 정렬 */
+            min-height: 100vh; /* 뷰포트 전체 높이 사용 */
+            margin: 0;
+            background-color: #f8f9fa; /* 배경색 설정 */
+        }
+        .container {
+            text-align: center; /* 내부 요소 중앙 정렬 */
+            padding: 30px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+        }
+        .button-group {
+            display: flex;
+            flex-direction: column; /* 버튼을 세로로 정렬 */
+            gap: 15px; /* 버튼 사이 간격 */
+            margin-top: 20px;
+        }
+        .button-group .btn {
+            width: 200px; /* 버튼 너비 고정 */
+            margin: 0 auto; /* 버튼 자체를 중앙 정렬 */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="py-3">
+    </div>
+
+    <div class="button-group">
+        <a th:href="@{/sign/signIn}" class="btn btn-primary btn-lg">로그인</a>
+        <a th:href="@{/sign/signUp}" class="btn btn-secondary btn-lg">회원가입</a>
+    </div>
+</div>
+</body>
+</html>

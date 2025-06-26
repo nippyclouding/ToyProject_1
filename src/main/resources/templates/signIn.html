@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>로그인</title>
+    <!-- Bootstrap CSS 링크 (친구의 경로에 맞게 수정해주세요) -->
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="/css/bootstrap.min.css" rel="stylesheet"> <!-- ✨ CSS 경로 수정 확인 -->
+    <style>
+        .container {
+            max-width: 400px; /* 로그인 폼은 좀 더 작게 */
+            margin-top: 50px; /* 상단 여백 추가 */
+        }
+        .form-group {
+            margin-bottom: 15px; /* 입력 필드 간 간격 */
+        }
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+            /* Bootstrap의 is-invalid 클래스와 유사하게 작동하도록 */
+            font-size: 0.875em; /* 작은 글씨 */
+            margin-top: 0.25rem; /* 위쪽 여백 */
+        }
+        /* 오류가 있는 input 필드에 빨간 테두리 추가 */
+        .form-control.field-error {
+            border-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="py-3 text-center">
+        <h2>로그인</h2>
+    </div>
+
+    <!-- 폼 전송 객체를 Member 객체로 사용 -->
+    <form th:action="@{/login}" method="post" th:object="${member}"> <!-- ✨ th:object="${member}"로 변경 -->
+
+        <!-- 글로벌 오류 메시지 표시 영역 -->
+        <div th:if="${#fields?.hasGlobalErrors()}" class="alert alert-danger" role="alert">
+            <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">글로벌 오류 메시지</p>
+        </div>
+        <div th:if="${loginError}" class="alert alert-danger" role="alert">
+            <p th:text="${loginError}">로그인 오류 메시지</p>
+        </div>
+
+
+        <div class="form-group">
+            <label for="id">아이디</label> <!-- ✨ for="id"로 변경 -->
+            <input type="text" id="id" th:field="*{id}"> <!-- ✨ id="id"와 th:field="*{id}"로 변경 -->
+            th:errorclass="field-error" class="form-control" placeholder="아이디를 입력하세요" required>
+            <div class="field-error" th:errors="*{id}"> <!-- ✨ th:errors="*{id}"로 변경 -->
+                아이디 오류
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" th:field="*{password}"> <!-- ✨ Member 객체의 password 필드와 연결 -->
+            th:errorclass="field-error" class="form-control" placeholder="비밀번호를 입력하세요" required>
+            <div class="field-error" th:errors="*{password}">
+                비밀번호 오류
+            </div>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="row">
+            <div class="col">
+                <button class="w-100 btn btn-primary btn-lg" type="submit">로그인</button>
+            </div>
+            <div class="col">
+                <a href="#" class="w-100 btn btn-secondary btn-lg" th:href="@{/sign/signUp}">회원가입</a>
+            </div>
+        </div>
+
+    </form>
+
+</div> <!-- /container -->
+</body>
+</html>
